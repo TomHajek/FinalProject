@@ -1,0 +1,13 @@
+.DS_Store
+*.pyc
+*.log
+__pycache__/*
+.idea/*
+.pytest_cache
+Lib
+Scripts
+db.sqlite3
+
+### IMPORTANT
+pyvenv.cfg
+green_swap/local_settings.py
