@@ -1,69 +1,65 @@
 from django.db.models import (
-    Model, CharField, TextField, ForeignKey, FloatField,
-    DateTimeField, IntegerField, BooleanField, ImageField,
+    Model, CharField, TextField, ForeignKey, DateTimeField, DecimalField,
+    SmallIntegerField, PositiveSmallIntegerField, ImageField,
     PROTECT,
 )
 
 
 class ProductSubCategory(Model):
     """
-    Rostliny
-        * pokojové, tilandsie, řasokoule, kapradiny, kaktusy a sukulenty, masožravé, orchideje a bromélie, ostatní...
-        * vhodná pro: kanceláře, ložnice, obývací pokoj, začátečníky, pet friendly, baby friendly, hodně světla...
-    Květináče
-        * magnetické, plastové, keramické, hliněné, kovové, betonové, závěsné, truhlíky, zavlažovací...
-        * velikost: -6cm, 7-9cm, 10-14cm, 15-19cm, 20-24cm, 25-29cm, 30+cm
-    Příslušenství
-        * stojánky, baňky,vzpěry, podložky
-    Doplňky
-        * Substráty, hnojiva, insekticidy
-    Nástroje
-        * konvičky, rozprašovače, nářadí
+    Pod-Kategorie produktů:
+        Rostliny
+            * pokojové, tilandsie, řasokoule, kapradiny, kaktusy a sukulenty, masožravé, orchideje a bromélie, ostatní
+            * description: pro kanceláře, ložnice, obývací pokoj, začátečníky, pet friendly, baby friendly, hodně světla
+        Květináče
+            * magnetické, plastové, keramické, hliněné, kovové, betonové, závěsné, truhlíky, zavlažovací...
+            * velikost: do 6cm, 7-9 cm, 10-14 cm, 15-19 cm, 20-24 cm, 25-29 cm, 30+ cm
+        Příslušenství
+            * stojánky, baňky,vzpěry, podložky
+        Doplňky
+            * Substráty, hnojiva, insekticidy
+        Nástroje
+            * konvičky, rozprašovače, nářadí
     """
     name = CharField(max_length=64, null=False, blank=False)
     description = TextField(max_length=128, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.name} - {self.description}"
+        return f"{self.name} {self.description}"
 
 
 class ProductCategory(Model):
-    """ Rostliny, Květináče, Doplňky """
+    """ Kategorie produktů: Rostliny, Květináče, Příslušenství, Doplňky, Nástroje """
     name = CharField(max_length=64, null=False, blank=False)
     sub_category = ForeignKey(ProductSubCategory, null=False, on_delete=PROTECT)
 
     def __str__(self):
-        return f"{self.name} - {self.sub_category.name} - {self.sub_category.description}"
-
-
-class Discount(Model):
-    """ Sleva produktu """
-    name = CharField(max_length=64, null=False, blank=False)
-    description = TextField(max_length=128, null=False, blank=False)
-    percent = FloatField(null=False, blank=False)
-    active = BooleanField(default=False, null=True, blank=True)
-    created_at = DateTimeField(null=False, blank=False)
-    modified_at = DateTimeField(null=True, blank=True)
-    deleted_at = DateTimeField(null=False, blank=False)
-
-    def __str__(self):
-        return f"Sleva {self.percent} %"
+        return f"{self.name} - {self.sub_category.name}"
 
 
 class Product(Model):
-    """ Produkt """
+    """ Produkt k prodeji """
     name = CharField(max_length=64, null=False, blank=False)
     description = TextField(max_length=128, null=False, blank=False)
-    category = ForeignKey(ProductCategory, null=False, on_delete=PROTECT)
-    # sub_category = ForeignKey(ProductSubCategory, null=False, on_delete=PROTECT)
-    diameter = IntegerField(null=False, blank=False)
-    price = FloatField(null=False, blank=False)
-    discount = ForeignKey(Discount, null=True, blank=True, on_delete=PROTECT)
-    quantity = IntegerField(null=False, blank=False)
-    image = ImageField(null=True, blank=True)
-    created_at = DateTimeField(null=False, blank=False)
+    category = ForeignKey(ProductCategory, null=False, on_delete=PROTECT, related_name="products")
+    diameter = SmallIntegerField(null=False, blank=False)
+    price = DecimalField(max_digits=8, decimal_places=2, null=False, blank=False)
+    quantity = PositiveSmallIntegerField(null=False, blank=False)  # pridat validator, nesmi byt mensi nez 0
+    image = ImageField(null=True, blank=True, upload_to="images/")
+    created_at = DateTimeField(auto_now_add=True)
     modified_at = DateTimeField(null=True, blank=True)
     deleted_at = DateTimeField(null=False, blank=False)
 
+    class Meta:
+        ordering = ["-created_at"]
+
     def __str__(self):
         return f"{self.name},  {self.price}, {self.quantity}%"
+
+    @property
+    def image_url(self):
+        try:
+            url = self.image.url
+        except ValueError:
+            url = ""
+        return url

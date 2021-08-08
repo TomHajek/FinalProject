@@ -1,14 +1,14 @@
 from django.contrib.auth.models import User
 from django.db.models import (
-    Model, OneToOneField, CharField, EmailField, TextField,
+    Model, OneToOneField, CharField, EmailField,
     CASCADE,
 )
 
 
 class Profile(Model):
+    """ Uživatelské profily """
     user = OneToOneField(User, on_delete=CASCADE)
-    biography = TextField(null=True, blank=True)
-
+    username = CharField(max_length=64, null=False)
     phone_number = CharField(
         max_length=16,
         default="",
@@ -21,3 +21,6 @@ class Profile(Model):
         blank=False,
         null=False
     )
+
+    def __str__(self):
+        return f" {self.user_id} {self.username} {self.email}"
