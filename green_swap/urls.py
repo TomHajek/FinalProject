@@ -14,13 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from django.conf.urls.static import static
 from django.conf import settings
 
+# --- URLs pro jednotlivé appky
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("", include("products.urls", namespace="products")),
+
+    path("products/", include("products.urls", namespace="products")),
+    path("accounts/", include("accounts.urls", namespace="accounts")),
+    path("cart/", include("cart.urls", namespace="cart")),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# --- Přidání Django site authentication urls (pro login, logout, password management...)
+# urlpatterns += [
+#    path('accounts/', include('django.contrib.auth.urls')),
+# ]
+
+# --- Přidání cesty pro složku se static files
+urlpatterns += static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+)

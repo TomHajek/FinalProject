@@ -13,7 +13,7 @@ class Discount(Model):
     """ Sleva produktu """
     name = CharField(max_length=64, null=False, blank=False)
     description = TextField(max_length=128, null=False, blank=False)
-    percent = DecimalField(null=False, blank=False)
+    percent = DecimalField(max_digits=5, decimal_places=2, null=False, blank=False)
     active = BooleanField(default=False, null=True, blank=True)
 
     discount = ForeignKey(Product, null=True, blank=True, on_delete=SET_NULL)
@@ -30,7 +30,7 @@ class Discount(Model):
 class Cart(Model):
     """ Nákupní košík """
     user = ForeignKey(Profile, on_delete=SET_NULL, null=True, blank=True)
-    status = SmallIntegerField(Status.get_choices())
+    status = SmallIntegerField(Status.get_choices(), default=10)
     created_at = DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -65,9 +65,9 @@ class Cart(Model):
 
 class CartItem(Model):
     """ Položky v košíku (Many-To-One relation) """
-    cart = ForeignKey(Cart, on_delete=SET_NULL)                        # sem nepřidávat related name
-    product = ForeignKey(Product, on_delete=SET_NULL, null=False, blank=False)
-    discount = ForeignKey(Discount, on_delete=SET_NULL, related_name="items")
+    cart = ForeignKey(Cart, on_delete=SET_NULL, null=True)                        # sem nepřidávat related name
+    product = ForeignKey(Product, on_delete=SET_NULL, null=True, blank=False)
+    discount = ForeignKey(Discount, on_delete=SET_NULL, related_name="items", null=True)
     quantity = PositiveIntegerField(default=1, null=False, blank=False)
     modified_at = DateTimeField(auto_now_add=True)                     # Date added to cart
 
@@ -88,11 +88,11 @@ class ShippingAddress(Model):
     user = ForeignKey(Profile, on_delete=SET_NULL, null=True, blank=True)
     address = CharField(max_length=128, null=False, blank=False)
     city = CharField(max_length=128, null=False, blank=False)
-    state = CharField(max_length=128, null=False, blank=False)
     zipcode = CharField(max_length=128, null=False, blank=False)
+    state_iso3 = CharField(max_length=3, null=False, blank=False)
 
     def full_address(self):
-        return f"{self.address}, {self.city}, {self.zipcode}, {self.state},"
+        return f"{self.address}, {self.city}, {self.zipcode}, {self.state_iso3},"
 
     def __str__(self):
         return f"{self.full_address}"
@@ -102,14 +102,14 @@ class Order(Model):
     """ Objednávka (faktura) """
     user = ForeignKey(Profile, on_delete=SET_NULL, null=True, blank=True)
     shipping_address = ForeignKey(ShippingAddress, on_delete=SET_NULL, null=True, blank=True)
-    cart_items = ForeignKey(CartItem, on_delete=SET_NULL, related_name="items")
-    total_cost = ForeignKey(Cart, on_delete=SET_NULL, related_name="items")
+    cart_items = ForeignKey(CartItem, on_delete=SET_NULL, related_name="items", null=True)
+    total_cost = ForeignKey(Cart, on_delete=SET_NULL, related_name="items", null=True)
 
     created_at = DateTimeField(auto_now_add=True)
     status = SmallIntegerField(Status.get_choices())
 
     def __str__(self):
-        return f"Uživatel: {self.user.username} {self.user.email} {self.user.phone_number}" \
+        return f"Uživatel: {self.user.user_id} {self.user.email} {self.user.phone_number}" \
                f"Dodací adresa: {self.shipping_address.full_address}" \
                f"Položky:{self.cart_items.product} {self.cart_items.quantity}" \
                f"Celkem položek: {self.total_cost.get_cart_items}" \

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="POST" action='{% url "accounts:log_out" %}'>
+        {% csrf_token %}
+        <p>Are you sure want to log out?</p>
+        <input type="submit" value="Submit" class="btn btn-danger">
+    </form>
+
+    <!-- <a href="{% url "accounts:log_in" %}">Click here to login again.</a> -->
+
+{% endblock %}
