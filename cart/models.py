@@ -1,12 +1,14 @@
 from django.db.models import (
-    Model, ForeignKey, PositiveIntegerField, SmallIntegerField, DecimalField,
-    CharField, DateTimeField, TextField, BooleanField,
+    Model, ForeignKey, PositiveIntegerField, DecimalField, CharField,
+    DateTimeField, TextField, BooleanField,  # SmallIntegerField,
     SET_NULL,
 )
 
 from accounts.models import Profile
 from products.models import Product
-from .enums import Status
+
+
+# from .enums import Status
 
 
 class Discount(Model):
@@ -30,11 +32,11 @@ class Discount(Model):
 class Cart(Model):
     """ Nákupní košík """
     user = ForeignKey(Profile, on_delete=SET_NULL, null=True, blank=True)
-    status = SmallIntegerField(Status.get_choices(), default=10)
+    # status = SmallIntegerField(Status.get_choices(), default=10)
     created_at = DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{str(self.id)}, Status: {self.status}"
+        return f"User no.: {str(self.user_id)}, order no.: {str(self.id)}"
 
     @property
     def availability(self):
@@ -51,7 +53,7 @@ class Cart(Model):
     @property
     def get_cart_total(self):
         """ Celkem k zaplacení """
-        cart_items = self.cartitem_set.all()                           # cartitem_set -> self generated "related name"
+        cart_items = self.cartitem_set.all()  # cartitem_set -> self generated "related name"
         total_cost = sum([item.get_total for item in cart_items])
         return total_cost
 
@@ -65,11 +67,11 @@ class Cart(Model):
 
 class CartItem(Model):
     """ Položky v košíku (Many-To-One relation) """
-    cart = ForeignKey(Cart, on_delete=SET_NULL, null=True)                        # sem nepřidávat related name
+    cart = ForeignKey(Cart, on_delete=SET_NULL, null=True)  # sem nepřidávat related name
     product = ForeignKey(Product, on_delete=SET_NULL, null=True, blank=False)
     discount = ForeignKey(Discount, on_delete=SET_NULL, related_name="items", null=True)
     quantity = PositiveIntegerField(default=1, null=False, blank=False)
-    modified_at = DateTimeField(auto_now_add=True)                     # Date added to cart
+    modified_at = DateTimeField(null=True, blank=True)  # Date added to cart
 
     class Meta:
         ordering = ["-modified_at"]
@@ -106,7 +108,8 @@ class Order(Model):
     total_cost = ForeignKey(Cart, on_delete=SET_NULL, related_name="items", null=True)
 
     created_at = DateTimeField(auto_now_add=True)
-    status = SmallIntegerField(Status.get_choices())
+
+    # status = SmallIntegerField(Status.get_choices())
 
     def __str__(self):
         return f"Uživatel: {self.user.user_id} {self.user.email} {self.user.phone_number}" \
@@ -115,4 +118,4 @@ class Order(Model):
                f"Celkem položek: {self.total_cost.get_cart_items}" \
                f"Celkem k úhradě: {self.total_cost.get_cart_total}" \
                f"Datum vytvoření: {self.created_at}" \
-               f"Status: {self.status}"
+             # f"Status: {self.status}"

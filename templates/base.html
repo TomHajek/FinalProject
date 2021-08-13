@@ -1,3 +1,110 @@
 {% load static %}
+<html {% if LANGUAGE_CODE %}lang="{{ LANGUAGE_CODE }}"{% endif %}>
 
-<h3>GreenSWAP</h3>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Tomas Hajek">
+    <meta name="description" content="Final Project - Green Swap: The House Plant Web Auction">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Swap: The House Plant Web Auction</title>
+
+    <!-- CSS style sheets -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/base_header.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/base_content.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/base_footer.css" %}">
+
+    <!-- Follow Me! Media icons -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Base js file -->
+    <script type="text/javascript" href="static/js/base.js"></script>
+
+    <!-- Bootstrap
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous">
+    </script>
+    -->
+
+</head>
+
+<body>
+    <header>
+        <!-- Navigation menu bar -->
+        <nav class="navbar">
+            <ul class="menu">
+                <li class="logo"><a href="{% url "products:products" %}">GREEN<span>SWAP</span></a></li>
+                <li class="item"><a href="{% url "products:products" %}">Shop</a></li>
+                <li class="item"><a href="#">Auction</a></li>
+                <li class="item"><a href="#">Blog</a></li>
+                <li class="item"><a href="#">About</a></li>
+                <li class="cart"><a href="{% url "cart:cart" %}">
+                    <img  id="cart-icon" src="{% static './images/bag.png' %}" alt="Cart">
+                    </a>
+                    <p id="cart-total">0</p>
+                </li>
+                <li class="item button"><a href="{% url "accounts:log_in" %}#">Login</a></li>
+                <li class="item button secondary"><a href="{% url "accounts:sign_up" %}">Sign-up</a></li>
+                <li class="toggler"><a href=""><span class="bars"></span></a></li>
+
+                <!-- Když bude čas.. předělat login tlačítka na dropdown menu + upravit styling -->
+                <!--
+                 <li class="dropdown">
+                    <button class="dropbtn">Log In</button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <p>Doesn´t have an account yet?<a href="#">Sign-in</a></p>
+                    </div>
+                </li>
+                -->
+
+            </ul>
+        </nav>
+        <!-- Web page banner -->
+        <div class="banner-area">
+            <h1>Green Swap</h1>
+            <h2>The House Plant Web Auction</h2>
+        </div>
+    </header>
+    <main>
+        <!-- Page content -->
+        <div class="container">
+            {% block content  %}
+
+            {% endblock content %}
+        </div>
+
+    </main>
+    <footer>
+        <!-- Footer content: Follow Me! Media links -->
+        <div class="footer-content">
+            <h3>Follow Me!</h3>
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/profile.php?id=100010496447929"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/tom%C3%A1%C5%A1-h%C3%A1jek-1b411616b/"><i class="fa fa-linkedin-square"></i></a></li>
+                <li><a href="https://www.instagram.com/tom_hayas/"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://github.com/TomHajek"><i class="fa fa-github"></i></a></li>
+            </ul>
+        </div>
+        <!-- Web creator signature -->
+        <div class="footer-bottom">
+            <p>&copy;2021 Designed by <span>_hayas</span></p>
+        </div>
+    </footer>
+</body>
+</html>
