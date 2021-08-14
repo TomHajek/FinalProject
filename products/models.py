@@ -45,7 +45,7 @@ class Product(Model):
     diameter = SmallIntegerField(null=False, blank=False)
     price = DecimalField(max_digits=8, decimal_places=2, null=False, blank=False)
     quantity = PositiveSmallIntegerField(null=False, blank=False)  # pridat validator, nesmi byt mensi nez 0
-    image = ImageField(null=True, blank=True, upload_to="images/")
+    image = ImageField(null=True, blank=True, upload_to="static/images/")
     created_at = DateTimeField(auto_now_add=True)
     modified_at = DateTimeField(null=True, blank=True)
     deleted_at = DateTimeField(null=False, blank=False)

@@ -13,13 +13,14 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/base_content.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/base_footer.css" %}">
 
-    <!-- Follow Me! Media icons -->
+    <!-- Font Awesome - Media icons -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Base js file -->
     <script type="text/javascript" href="static/js/base.js"></script>
 
-    <!-- Bootstrap
+    <!-- Bootstrap -->
+    <!--
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -53,13 +54,14 @@
                 <li class="item"><a href="#">Auction</a></li>
                 <li class="item"><a href="#">Blog</a></li>
                 <li class="item"><a href="#">About</a></li>
-                <li class="cart"><a href="{% url "cart:cart" %}">
-                    <img  id="cart-icon" src="{% static './images/bag.png' %}" alt="Cart">
+                <li class="item cart">
+                    <a href="{% url "cart:cart" %}">
+                        <i class="fa fa-shopping-bag fa-lg" aria-hidden="true"></i>
+                        <p id="cart-total">{{ cart_items }}</p>
                     </a>
-                    <p id="cart-total">0</p>
                 </li>
-                <li class="item button"><a href="{% url "accounts:log_in" %}#">Login</a></li>
-                <li class="item button secondary"><a href="{% url "accounts:sign_up" %}">Sign-up</a></li>
+                <li class="item button"><a href="{% url "accounts:login" %}#">Log-in</a></li>
+                <li class="item button secondary"><a href="{% url "accounts:signup" %}">Sign-up</a></li>
                 <li class="toggler"><a href=""><span class="bars"></span></a></li>
 
                 <!-- Když bude čas.. předělat login tlačítka na dropdown menu + upravit styling -->

@@ -36,5 +36,5 @@ class MeView(LoginRequiredMixin, UpdateView):
 
 class SubmittableLogoutView(TemplateView):
     """ Okno odhlášení uživatele """
-    template_name = 'registration/log_out.html'
+    template_name = 'registration/logout.html'
     # success_url = reverse_lazy("index")
