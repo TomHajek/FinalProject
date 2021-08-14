@@ -7,8 +7,6 @@
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
-    color: #325050;
-    font-family: 'Libre Baskerville', sans-serif;
     justify-content: center;
 }
 
@@ -19,24 +17,52 @@
     -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
     -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
 	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
-    justify-content: center;
+}
 
+.image-container {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .thumbnail {
 	height: 200px;
-    display: block;
 }
 
-.box-element {
+.element-container {
 	padding: 10px;
+    vertical-align: center;
+}
+
+.element-container h3 {
+    color: #325050;
+    font-family: 'Calibri', sans-serif;
+}
+
+.element-container hr {
+    border-top: #356960;
+    color: #356960;
+}
+
+.underline-details {
+    display: block;
+    vertical-align: middle;
+    padding-top: 5px;
+}
+
+.underline-details h3 {
+    float: right;
+    color: #325050;
+    font-weight: bold;
+    font-family: 'Julius Sans One', sans-serif;
 }
 
 .add-button {
     padding: 5px 5px;
-    background: #134347;
+    background: #356960;
     border: 1px #134347 solid;
-    font-size: 12px;
+    font-size: 14px;
+    font-family: 'Julius Sans One', sans-serif;
     color: rgba(255,255,255,0.8);
 }
 
@@ -48,18 +74,19 @@
     border-color: #356960;
 }
 
-.box-element a{
+.element-container a{
     padding: 5px 5px;
-    background: #356960;
+    background: #bf9d9d;
     border: 1px #134347 solid;
-    font-size: 12px;
-    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    font-family: 'Julius Sans One', sans-serif;
+    color: #356960;
     text-decoration: none;
 }
 
-.box-element a:hover{
+.element-container a:hover{
     text-decoration: underline;
-    color: #ddd;
-    background: #4f7d7d;
+    color: rgba(53,105,96,0.8);
+    background: rgba(191, 157, 157, 0.8);
     border-color: #356960;
 }

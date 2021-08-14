@@ -5,19 +5,21 @@
     <div class="flexbox">
         {% for product in products %}
             <div class="content-container">
-                <img class="thumbnail" src="{{product.image_url}}" alt="{{product.id}}">
-                <div class="box-element product">
-				    <h6><strong>{{product.name}}</strong></h6>
+                <div class="image-container">
+                    <img class="thumbnail" src="{{product.image_url}}" alt="{{product.id}}">
+                </div>
+                <div class="element-container">
+				    <h3>{{product.name}}</h3>
 				    <hr>
-
-				    <button class="add-button" data-product="{{product.id}}"
-                            data-action="add"
-                            class="btn btn-outline-secondary add-btn update-cart">Add to Cart
-                    </button>
-
-				    <a class="btn btn-outline-success" href="#">View</a>
-				    <h4 style="display: inline-block; float: right"><strong>{{product.price}}</strong></h4>
-
+                    <div class="underline-details">
+                        <button class="add-button" data-product="{{product.id}}" data-action="add">
+                            Add to Cart
+                        </button>
+                        <a class="btn btn-outline-success" href="#">
+                            View
+                        </a>
+				        <h3>{{product.price}} CZK</h3>
+                    </div>
                 </div>
             </div>
         {% endfor %}

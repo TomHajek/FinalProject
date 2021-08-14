@@ -10,7 +10,7 @@ class SignUpView(CreateView):
     """ Okno registrace uživatele """
     template_name = "form.html"
     form_class = SignUpForm
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("accounts:login")
 
 
 class MeView(LoginRequiredMixin, UpdateView):
@@ -18,7 +18,7 @@ class MeView(LoginRequiredMixin, UpdateView):
     template_name = "form.html"
     model = User
     form_class = MeForm
-    success_url = reverse_lazy('accounts:me')
+    success_url = reverse_lazy('products:products')
 
     def get_object(self, pk=None, slug=None, queryset=None):
         """ Vrácení objektu (uživatele) """

@@ -2,10 +2,10 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.db.transaction import atomic
 from django.forms import (
-    CharField, ModelChoiceField, EmailField,
+    CharField, EmailField,
 )
 
-from .models import Profile, Address
+from .models import Profile
 
 
 class SignUpForm(UserCreationForm):
@@ -50,10 +50,6 @@ class MeForm(UserChangeForm):
 
     phone_number = CharField(max_length=32, required=False)
     email = EmailField(max_length=128, required=True)
-    address = ModelChoiceField(
-        queryset=Address.objects,
-        required=False
-    )
 
     @atomic
     def save(self, commit=True):
@@ -62,7 +58,6 @@ class MeForm(UserChangeForm):
 
         result.profile.phone_number = self.cleaned_data["phone_number"]
         result.profile.email = self.cleaned_data["email"]
-        result.profile.address = self.cleaned_data["address"]
 
         if commit:
             result.profile.save()
