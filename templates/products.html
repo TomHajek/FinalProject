@@ -2,43 +2,19 @@
 {% load static %}
 
 {% block content %}
-
-    <!-- test -->
-    <div class="row">
-        <div class="container-product">
-            <img src="" alt="picture">
-                <div class="box-element product">
-				    <h6><strong>Produkt</strong></h6>
-				    <hr>
-
-				    <button data-product="ID produktu"
-                            data-action="add"
-                            class="btn btn-outline-secondary add-btn update-cart">Add to Cart
-                    </button>
-
-				    <a class="btn btn-outline-success" href="#">View</a>
-				    <h4 style="display: inline-block; float: right"><strong>Cena</strong></h4>
-                </div>
-        </div>
-    </div>
-
-
-
     <div class="row">
         {% for product in products %}
             <div class="container-product">
-                <img class="thumbnail" src="{{Product.image}}" alt="{{Product.id}}">
+                <img class="thumbnail" src="{{product.image}}" alt="{{product.id}}">
                 <div class="box-element product">
-				    <h6><strong>{{Product.name}}</strong></h6>
+				    <h6><strong>{{product.name}}</strong></h6>
 				    <hr>
-
-				    <button data-product="{{Product.id}}"
+				    <button data-product="{{product.id}}"
                             data-action="add"
                             class="btn btn-outline-secondary add-btn update-cart">Add to Cart
                     </button>
-
 				    <a class="btn btn-outline-success" href="#">View</a>
-				    <h4 style="display: inline-block; float: right"><strong>{{Product.price}}</strong></h4>
+				    <h4 style="display: inline-block; float: right"><strong>{{product.price}}</strong></h4>
 
                 </div>
             </div>

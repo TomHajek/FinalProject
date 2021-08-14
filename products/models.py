@@ -1,6 +1,6 @@
 from django.db.models import (
-    Model, CharField, TextField, ForeignKey, DateTimeField, DecimalField,
-    SmallIntegerField, PositiveSmallIntegerField, ImageField,
+    Model, CharField, TextField, ForeignKey, DateTimeField,
+    DecimalField, PositiveSmallIntegerField, ImageField,
     PROTECT,
 )
 
@@ -42,13 +42,13 @@ class Product(Model):
     name = CharField(max_length=64, null=False, blank=False)
     description = TextField(max_length=128, null=False, blank=False)
     category = ForeignKey(ProductCategory, null=False, on_delete=PROTECT, related_name="products")
-    diameter = SmallIntegerField(null=False, blank=False)
+    diameter = PositiveSmallIntegerField(null=False, blank=False)
     price = DecimalField(max_digits=8, decimal_places=2, null=False, blank=False)
     quantity = PositiveSmallIntegerField(null=False, blank=False)  # pridat validator, nesmi byt mensi nez 0
     image = ImageField(null=True, blank=True, upload_to="static/images/")
     created_at = DateTimeField(auto_now_add=True)
     modified_at = DateTimeField(null=True, blank=True)
-    deleted_at = DateTimeField(null=False, blank=False)
+    # deleted_at = DateTimeField(null=False, blank=False)
 
     class Meta:
         ordering = ["-created_at"]

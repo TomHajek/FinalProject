@@ -27,7 +27,7 @@ class MeView(LoginRequiredMixin, UpdateView):
     def get_initial(self):
         """ Vrácení počátečních dat v okně uživatele (formuláře uživatele) """
         results = super().get_initial()
-        results["phone_number"] = self.request.user.profile.personal_phone
+        results["phone_number"] = self.request.user.profile.phone_number
         results["email"] = self.request.user.profile.email
         results["address"] = self.request.user.profile.address
 

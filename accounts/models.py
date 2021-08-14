@@ -16,7 +16,7 @@ class Address(Model):
         return f"{self.address}, {self.city}, {self.zipcode}, {self.state_iso3},"
 
     def __str__(self):
-        return f"{self.full_address}"
+        return self.full_address()
 
 
 class Profile(Model):
