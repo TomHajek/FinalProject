@@ -40,12 +40,12 @@ class ProductCategory(Model):
 class Product(Model):
     """ Produkt k prodeji """
     name = CharField(max_length=64, null=False, blank=False)
-    description = TextField(max_length=128, null=False, blank=False)
+    description = TextField(max_length=400, null=False, blank=False)
     category = ForeignKey(ProductCategory, null=False, on_delete=PROTECT, related_name="products")
     diameter = PositiveSmallIntegerField(null=False, blank=False)
     price = DecimalField(max_digits=8, decimal_places=2, null=False, blank=False)
-    quantity = PositiveSmallIntegerField(null=False, blank=False)  # pridat validator, nesmi byt mensi nez 0
-    image = ImageField(null=True, blank=True, upload_to="static/images/")
+    quantity = PositiveSmallIntegerField(null=False, blank=False)
+    image = ImageField(null=True, blank=True, upload_to="")
     created_at = DateTimeField(auto_now_add=True)
     modified_at = DateTimeField(null=True, blank=True)
     # deleted_at = DateTimeField(null=False, blank=False)
@@ -54,7 +54,7 @@ class Product(Model):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return f"{self.name},  {self.price}, {self.quantity}%"
+        return f"{self.name},  {self.price} CZK, {self.quantity} PCS"
 
     @property
     def image_url(self):

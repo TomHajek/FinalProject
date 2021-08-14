@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Shadows+Into+Light&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
 
 /* GENERAL */
@@ -9,6 +8,11 @@
     box-sizing: border-box;         /* Opera/IE 8+ */
     padding: 0;
     margin: 0;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+body {
+    background-color: #e5ede8;
 }
 
 
