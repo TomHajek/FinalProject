@@ -8,3 +8,8 @@ $(function() {
         }
     });
 });
+
+
+
+// Add item to shopping cart
+
