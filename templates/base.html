@@ -11,15 +11,21 @@
 
     <!-- CSS style sheets -->
     <link rel="stylesheet" type="text/css" href="{% static "css/base_header.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "css/base_products.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/base_footer.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/products.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/cart.css" %}">
 
     <!-- Font Awesome - Media icons -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Base js file -->
-    <script type="text/javascript" src="{% static "js/base.js" %}"></script>
+    <!-- jQuery // musí být před JS jinak bude browser házet chyby a JS funkce nebudou fungovat -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous">
+    </script>
 
+    <!-- Base js file -->
+    <script type="text/javascript" src="{% static "js/base.js" %}" async></script>
 </head>
 
 <body>
@@ -61,19 +67,6 @@
                 <!-- Burger Menu -->
                 <li class="toggler"><a href=""><span class="bars"></span></a></li>
 
-
-
-                <!-- Když bude čas.. předělat login tlačítka na dropdown menu + upravit styling -->
-                <!--
-                 <li class="dropdown">
-                    <button class="dropbtn">Log In</button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <p>Doesn´t have an account yet?<a href="#">Sign-in</a></p>
-                    </div>
-                </li>
-                -->
-
             </ul>
         </nav>
         <!-- Web page banner -->
@@ -85,9 +78,7 @@
     <main>
         <!-- Page content -->
         {% block content  %}
-
         {% endblock content %}
-
     </main>
     <footer>
         <!-- Footer content: Follow Me! Media links -->

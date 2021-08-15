@@ -2,6 +2,71 @@
 {% load static %}
 
 {% block content %}
-     <h3>Cart</h3>
-    <p>Work in progress</p>
+    <div class="flexbox-cart">
+        <div class="cart-container">
+            <div class="summary-container">
+                <a class="shopping-button"
+                   href="{% url "products:products" %}">
+                    &#x2190; Continue Shopping
+                </a>
+                <hr class="separator-1">
+            </div>
+            <table class="summary-table">
+                <tr>
+                    <th><h5>Items: {{cart.get_cart_items}}</h5></th>
+                    <th><h5>Total: {{order.get_cart_total}}</h5></th>
+                    <th>
+                        <a  class="checkout-button" href="{% url "cart:checkout" %}">Checkout</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div class="purchase-container">
+            <table class="items-table">
+                <tr class="cart-row">
+                    <th><h5>Preview</h5></th>
+                    <th><h5>Item</h5></th>
+                    <th><h5>Price</h5></th>
+                    <th><h5>Quantity</h5></th>
+                    <th><h5>Total</h5></th>
+                </tr>
+            </table>
+            <hr class="separator-2">
+            {% for item in items %}
+                <table class="items-table">
+                    <tr>
+                        {% if product.image_url %}
+                            <th>
+                                <img class="row-image" src="{{item.product.imageURL}}" alt="{{product.id}}">
+                            </th>
+                        {% else %}
+                            <th>
+                                <img class="row-image" src="{% static "images/placeholder.png" %}" alt="{{product.id}}">
+                            </th>
+                        {% endif %}
+                        <th><p>{{item.product.name}}</p></th>
+                        <th><p>{{item.product.price}}</p></th>
+                        <th><p class="item-quantity">{{item.quantity}}</p>
+                            <div class="quantity">
+                                <img data-product="{{item.product.id}}"
+                                     data-action="add"
+                                     class="change-quantity update-cart"
+                                     src="{% static  'images/arrow-up.png' %}"
+                                     alt="arrow-up">
+                                <img data-product="{{item.product.id}}"
+                                     data-action="remove"
+                                     class="change-quantity update-cart"
+                                     src="{% static  'images/arrow-down.png' %}"
+                                     alt="arrow-down">
+                            </div>
+                        </th>
+                        <th>
+                            <p class="total">{{item.get_total}}</p>
+                        </th>
+                    </tr>
+                </table>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock content %}

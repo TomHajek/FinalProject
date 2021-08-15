@@ -53,7 +53,7 @@ body {
 }
 
 .logo a,
-.toggle a {
+.toggler a {
     font-size: 20px;
 }
 
@@ -62,6 +62,7 @@ body {
 }
 
 /* Shopping Cart */
+/*
 #cart-total{
 	display: block;
 	text-align: center;
@@ -74,7 +75,7 @@ body {
 	font-size: 10px;
     font-weight: bold;
 }
-
+*/
 
 /* Banner */
 .banner-area {
@@ -95,7 +96,8 @@ body {
 }
 
 
-/* Mobile menu */
+/* MOBILE MENU */
+/* Nav Menu Toggle (full burger-bar) */
 .menu {
     display: flex;
     flex-wrap: wrap;
@@ -139,7 +141,7 @@ body {
     font-style: italic;
 }
 
-/* Nav Menu Toggle (burger bar) */
+/* Burger bar */
 .toggler {
     cursor:pointer;
 }
@@ -173,7 +175,8 @@ body {
 }
 
 
-/* Tablet Menu (partial burger-bar) */
+/* TABLET MENU */
+/* Nav Menu Toggle (partial burger-bar) */
 @media all and (min-width: 468px) {
     .menu {
         justify-content: center;
@@ -244,7 +247,7 @@ body {
 }
 
 
-/* Desktop menu */
+/* DESKTOP MENU */
 @media all and (min-width: 768px) {
     .item {
         display: block;

@@ -6,7 +6,11 @@
         {% for product in products %}
             <div class="content-container">
                 <div class="image-container">
-                    <img class="thumbnail" src="{{product.image_url}}" alt="{{product.id}}">
+                    {% if product.image_url %}
+                        <img class="thumbnail" src="{{product.image_url}}" alt="{{product.id}}">
+                    {% else %}
+                        <img class="thumbnail" src="{% static "images/placeholder.png" %}" alt="{{product.id}}">
+                    {% endif %}
                 </div>
                 <div class="element-container">
 				    <h3>{{product.name}}</h3>
@@ -15,10 +19,10 @@
                         <button class="add-button" data-product="{{product.id}}" data-action="add">
                             Add to Cart
                         </button>
-                        <a class="btn btn-outline-success" href="#">
+                        <a class="view-button" href="#">
                             View
                         </a>
-				        <h3>{{product.price}} CZK</h3>
+				        <h3>{{product.price}} {{product.currency}}</h3>
                     </div>
                 </div>
             </div>

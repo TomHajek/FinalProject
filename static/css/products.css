@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Shadows+Into+Light&display=swap');
 
 /* PAGE CONTENT */
 /* products.html */
 .flexbox {
-    margin: 10px;
+    margin: 25px 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+
+/* Product container */
 .content-container {
     margin: 10px 10px;
     width: 300px;
@@ -74,7 +75,7 @@
     border-color: #356960;
 }
 
-.element-container a{
+.element-container a {
     padding: 5px 5px;
     background: #bf9d9d;
     border: 1px #134347 solid;
@@ -84,7 +85,7 @@
     text-decoration: none;
 }
 
-.element-container a:hover{
+.element-container a:hover {
     text-decoration: underline;
     color: rgba(53,105,96,0.8);
     background: rgba(191, 157, 157, 0.8);

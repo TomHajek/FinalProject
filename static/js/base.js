@@ -1,15 +1,21 @@
 // Burger-Bar Menu Functionality
-$(function() {
-    $(".toggler").on("click", function() {
-        if ($(".item").hasClass("active")) {
-            $(".item").removeClass("active");
+$(document).ready(function () {
+    $(".toggler").click(function (e) {
+        e.preventDefault();
+        let liItems = $("li.item");
+        if (liItems.hasClass("active")) {
+            liItems.removeClass("active");
         } else {
-            $(".item").addClass("active");
+            liItems.addClass("active");
         }
     });
 });
 
-
-
 // Add item to shopping cart
+
+
+/*
+if item quantity > 1: on click, add item to cart
+
+ */
 
