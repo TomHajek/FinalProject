@@ -61,7 +61,7 @@ body {
     border-bottom: 1px rgba(255,255,255,0.8) solid;
 }
 
-/* Shopping Cart */
+/* Shopping Cart - ukazatel počtu produktů v košíku */
 /*
 #cart-total{
 	display: block;

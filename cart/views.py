@@ -4,6 +4,7 @@ from .models import Cart, Order
 
 
 def cart(request):
+    """ Okno košíku """
     context = {
         "cart": Cart.objects.all()
     }
@@ -11,6 +12,7 @@ def cart(request):
 
 
 def checkout(request):
+    """ Okno potvrzení objednávky """
     context = {
         "order": Order.objects.all()
     }

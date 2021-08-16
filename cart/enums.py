@@ -2,6 +2,7 @@ from enum import IntEnum
 
 
 class Status(IntEnum):
+    """ Evidence stavu"""
     opened = 10
     pending = 20
     accepted = 30

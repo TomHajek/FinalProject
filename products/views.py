@@ -4,6 +4,7 @@ from .models import Product
 
 
 def products(request):
+    """ Okno produktů """
     context = {
         "products": Product.objects.all()
     }

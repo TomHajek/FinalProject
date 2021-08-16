@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <!-- Formulář k registraci -->
     <form method="POST">
-    {% csrf_token %}
-    <table>{{ form }}</table>
-    <input type="submit" value="Submit" class="btn btn-primary">
+        {% csrf_token %}
+        <table>{{ form }}</table>
+        <input type="submit" value="Submit" class="btn btn-primary">
     </form>
 {% endblock %}

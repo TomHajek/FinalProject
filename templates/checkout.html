@@ -2,5 +2,96 @@
 {% load static %}
 
 {% block content %}
-     <h3>Checkout</h3>
+    <div class="flexbox-checkout">
+        <!-- Dodací údaje -->
+        <div class="shipping-info-container">
+            <div class="form-container">
+                <form id="shipping-form">
+                    <!-- Informace uživatele -->
+                    <div id="user-info">
+                            <div class="form-field">
+                                <label>
+                                    <input required class="form-control" type="text" name="name" placeholder="Name..">
+                                </label>
+                            </div>
+                            <div class="form-field">
+                                <label>
+                                    <input required class="form-control" type="email" name="email" placeholder="Email..">
+                                </label>
+                            </div>
+                        </div>
+                    <hr class="separator-3">
+                    <p>Shipping Information:</p>
+                    <hr class="separator-3">
+                    <!-- Dodací adresa -->
+                    <div id="shipping-info">
+                        <div class="form-field">
+                            <label>
+                                <input class="form-control" type="text" name="address" placeholder="Address..">
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label>
+                                <input class="form-control" type="text" name="city" placeholder="City..">
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label>
+                                <input class="form-control" type="text" name="state" placeholder="State..">
+                            </label>
+                        </div>
+                        <div class="form-field">
+                            <label>
+                                <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+                            </label>
+                        </div>
+                    </div>
+                    <hr class="separator-3">
+                    <!-- Potvrzení objednávky -->
+                    <input class="form-button" type="submit" value="Continue">
+                </form>
+            </div>
+            <br>
+            <!-- Platba -->
+            <!--
+                <div class="payment-container hidden" id="payment-info">
+                    <small>Payment Options</small>
+                    <button id="make-payment">Make payment</button>
+                    <div id="payment-button-container"></div>
+                </div>
+                -->
+        </div>
+        <!-- Shrnutí objednávky -->
+        <div class="order-summary-container">
+            <!-- Návrat do košíku -->
+            <a  class="back-to-cart-button" href="{% url 'cart:cart' %}">&#x2190; Back to Cart</a>
+            <hr class="separator-4">
+            <h3>Order Summary</h3>
+            <hr class="separator-4">
+            <!-- Tabulka položek v košíku -->
+            {% for item in items %}
+                <table class="items-table">
+                    <tr>
+                        {% if product.image_url %}
+                            <th>
+                                <img class="row-image" src="{{item.product.imageURL}}" alt="{{product.id}}">
+                            </th>
+                        {% else %}
+                            <th>
+                                <img class="row-image" src="{% static "images/placeholder.png" %}" alt="{{product.id}}">
+                            </th>
+                        {% endif %}
+                        <th><p>{{item.product.name}}</p></th>
+                        <th><p>{{item.product.price}}</p></th>
+                        <th><p>{{item.quantity}}</p></th>
+                    </tr>
+                </table>
+            {% endfor %}
+            <hr class="separator-4">
+            <!-- Shrnutí nákupu -->
+            <h5>Items:   {{order.get_cart_items}}</h5>
+            <br>
+            <h5>Total:   {{order.get_cart_total}}</h5>
+        </div>
+    </div>
 {% endblock content %}

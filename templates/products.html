@@ -5,6 +5,7 @@
     <div class="flexbox">
         {% for product in products %}
             <div class="content-container">
+                <!-- Obrázek produktu -->
                 <div class="image-container">
                     {% if product.image_url %}
                         <img class="thumbnail" src="{{product.image_url}}" alt="{{product.id}}">
@@ -12,13 +13,16 @@
                         <img class="thumbnail" src="{% static "images/placeholder.png" %}" alt="{{product.id}}">
                     {% endif %}
                 </div>
+                <!-- Informace o produktu -->
                 <div class="element-container">
 				    <h3>{{product.name}}</h3>
 				    <hr>
                     <div class="underline-details">
+                        <!-- Přidat do košíku -->
                         <button class="add-button" data-product="{{product.id}}" data-action="add">
                             Add to Cart
                         </button>
+                        <!-- Detail produktu -->
                         <a class="view-button" href="#">
                             View
                         </a>

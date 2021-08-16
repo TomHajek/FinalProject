@@ -4,6 +4,7 @@
 {% block content %}
     <div class="flexbox-cart">
         <div class="cart-container">
+            <!-- Zpět k nákupu -->
             <div class="summary-container">
                 <a class="shopping-button"
                    href="{% url "products:products" %}">
@@ -11,6 +12,7 @@
                 </a>
                 <hr class="separator-1">
             </div>
+             <!-- Tabulka shrnutí -->
             <table class="summary-table">
                 <tr>
                     <th><h5>Items: {{cart.get_cart_items}}</h5></th>
@@ -22,7 +24,9 @@
             </table>
         </div>
         <br>
+        <!-- Seznam produktů v košíku -->
         <div class="purchase-container">
+            <!-- Header -->
             <table class="items-table">
                 <tr class="cart-row">
                     <th><h5>Preview</h5></th>
@@ -33,10 +37,11 @@
                 </tr>
             </table>
             <hr class="separator-2">
+            <!-- Seznam produktů v košíku -->
             {% for item in items %}
                 <table class="items-table">
                     <tr>
-                        {% if product.image_url %}
+                        {% if item.product.image_url %}
                             <th>
                                 <img class="row-image" src="{{item.product.imageURL}}" alt="{{product.id}}">
                             </th>

@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Shadows+Into+Light&display=swap');
+
+/* PAGE CONTENT */
+/* checkout.html */
+.flexbox-checkout {
+    margin: 25px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Shipping form */
+.shipping-info-container {
+    margin: 10px;
+    padding: 15px 15px 0 15px;
+    min-width: 300px;
+    background-color: #fff;
+    -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+    -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+}
+
+.form-field {
+    margin-bottom: 3px;
+}
+
+#user-info {
+
+}
+
+#shipping-info {
+
+}
+
+.form-container p {
+    color: #325050;
+    font-size: 14px;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.separator-3 {
+    margin: 10px 0;
+    border-top: #356960;
+    color: #356960;
+}
+
+.form-button {
+    padding: 5px 5px;
+    background: #bf9d9d;
+    border: 1px #356960 solid;
+    font-size: 14px;
+    font-family: 'Julius Sans One', sans-serif;
+    color: #356960;
+    text-decoration: none;
+}
+
+.form-button:hover {
+    text-decoration: underline;
+    color: rgba(53,105,96,0.8);
+    background: rgba(191, 157, 157, 0.8);
+    border-color: #356960;
+}
+
+
+
+
+
+
+
+
+
+
+/* Order Summary */
+.order-summary-container {
+    margin: 10px;
+    padding: 20px 15px;
+    min-width: 300px;
+    background-color: #fff;
+    -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+    -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+}
+
+.order-summary-container h3 {
+    color: #325050;
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.order-summary-container h5 {
+    color: #325050;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.separator-4 {
+    margin: 15px 0;
+    border-top: #356960;
+    color: #356960;
+}
+
+.back-to-cart-button {
+    padding: 5px 5px;
+    background: #356960;
+    border: 1px #134347 solid;
+    font-size: 14px;
+    text-decoration: none;
+    font-family: 'Julius Sans One', sans-serif;
+    color: rgba(255,255,255,0.8);
+}
+
+.back-to-cart-button:hover {
+    text-decoration: underline;
+    transition:all .25s;
+    color: #ddd;
+    background: #4f7d7d;
+    border-color: #356960;
+}

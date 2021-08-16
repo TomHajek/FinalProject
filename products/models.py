@@ -58,6 +58,7 @@ class Product(Model):
 
     @property
     def image_url(self):
+        """ Ověření obrázku """
         try:
             url = self.image.url
         except ValueError:
