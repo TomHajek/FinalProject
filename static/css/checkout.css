@@ -24,13 +24,10 @@
     margin-bottom: 3px;
 }
 
-#user-info {
-
+.form-field label {
+    width: 100%;
 }
 
-#shipping-info {
-
-}
 
 .form-container p {
     color: #325050;

@@ -3,6 +3,38 @@
 
 {% block content %}
     <div class="flexbox-checkout">
+        <!-- Shrnutí objednávky -->
+        <div class="order-summary-container">
+            <!-- Návrat do košíku -->
+            <a  class="back-to-cart-button" href="{% url 'cart:cart' %}">&#x2190; Back to Cart</a>
+            <hr class="separator-4">
+            <h3>Order Summary</h3>
+            <hr class="separator-4">
+            <!-- Tabulka položek v košíku -->
+            {% for item in items %}
+                <table class="items-table">
+                    <tr>
+                        {% if product.image_url %}
+                            <th>
+                                <img class="row-image" src="{{item.product.imageURL}}" alt="{{product.id}}">
+                            </th>
+                        {% else %}
+                            <th>
+                                <img class="row-image" src="{% static "images/placeholder.png" %}" alt="{{product.id}}">
+                            </th>
+                        {% endif %}
+                        <th><p>{{item.product.name}}</p></th>
+                        <th><p>{{item.product.price}}</p></th>
+                        <th><p>{{item.quantity}}</p></th>
+                    </tr>
+                </table>
+            {% endfor %}
+            <hr class="separator-4">
+            <!-- Shrnutí nákupu -->
+            <h5>Items:   {{order.get_cart_items}}</h5>
+            <br>
+            <h5>Total:   {{order.get_cart_total}}</h5>
+        </div>
         <!-- Dodací údaje -->
         <div class="shipping-info-container">
             <div class="form-container">
@@ -11,12 +43,26 @@
                     <div id="user-info">
                             <div class="form-field">
                                 <label>
-                                    <input required class="form-control" type="text" name="name" placeholder="Name..">
+                                    <input required class="form-control"
+                                           type="text"
+                                           name="first_name"
+                                           placeholder="First Name..">
                                 </label>
                             </div>
                             <div class="form-field">
                                 <label>
-                                    <input required class="form-control" type="email" name="email" placeholder="Email..">
+                                    <input required class="form-control"
+                                           type="text"
+                                           name="last_name"
+                                           placeholder="Last Name..">
+                                </label>
+                            </div>
+                            <div class="form-field">
+                                <label>
+                                    <input required class="form-control"
+                                           type="email"
+                                           name="email"
+                                           placeholder="Email..">
                                 </label>
                             </div>
                         </div>
@@ -60,38 +106,6 @@
                     <div id="payment-button-container"></div>
                 </div>
                 -->
-        </div>
-        <!-- Shrnutí objednávky -->
-        <div class="order-summary-container">
-            <!-- Návrat do košíku -->
-            <a  class="back-to-cart-button" href="{% url 'cart:cart' %}">&#x2190; Back to Cart</a>
-            <hr class="separator-4">
-            <h3>Order Summary</h3>
-            <hr class="separator-4">
-            <!-- Tabulka položek v košíku -->
-            {% for item in items %}
-                <table class="items-table">
-                    <tr>
-                        {% if product.image_url %}
-                            <th>
-                                <img class="row-image" src="{{item.product.imageURL}}" alt="{{product.id}}">
-                            </th>
-                        {% else %}
-                            <th>
-                                <img class="row-image" src="{% static "images/placeholder.png" %}" alt="{{product.id}}">
-                            </th>
-                        {% endif %}
-                        <th><p>{{item.product.name}}</p></th>
-                        <th><p>{{item.product.price}}</p></th>
-                        <th><p>{{item.quantity}}</p></th>
-                    </tr>
-                </table>
-            {% endfor %}
-            <hr class="separator-4">
-            <!-- Shrnutí nákupu -->
-            <h5>Items:   {{order.get_cart_items}}</h5>
-            <br>
-            <h5>Total:   {{order.get_cart_total}}</h5>
         </div>
     </div>
 {% endblock content %}

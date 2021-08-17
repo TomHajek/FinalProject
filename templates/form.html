@@ -2,9 +2,13 @@
 
 {% block content %}
     <!-- Formulář k registraci -->
-    <form method="POST">
-        {% csrf_token %}
-        <table>{{ form }}</table>
-        <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
+    <div class="flexbox-signup">
+        <div class="signup-container">
+            <form method="POST">
+                {% csrf_token %}
+                <table id="register-table">{{ form }}</table>
+                <input id="register-submit" type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
 {% endblock %}
