@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="POST" action='{% url "accounts:log_out" %}'>
-        {% csrf_token %}
-        <p>Are you sure want to log out?</p>
-        <input type="submit" value="Submit" class="btn btn-danger">
-    </form>
-
-    <!-- <a href="{% url "accounts:log_in" %}">Click here to login again.</a> -->
-
+    <div class="flexbox-logout">
+        <div class="logout-container">
+            <form class="logout-form" method="POST" action='{% url "accounts:login" %}'>
+                {% csrf_token %}
+                <p id="logout-message">Are you sure want to log out?</p>
+                <input id="logout-confirm" type="submit" value="Submit" class="btn btn-danger">
+            </form>
+            <!--
+            <a href="{% url "accounts:login" %}">Click here to login again.</a>
+            -->
+        </div>
+    </div>
 {% endblock %}
