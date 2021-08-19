@@ -9,64 +9,6 @@
     justify-content: center;
 }
 
-/* Shipping form */
-.shipping-info-container {
-    margin: 10px;
-    padding: 15px 15px 0 15px;
-    min-width: 300px;
-    background-color: #fff;
-    -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
-    -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
-	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
-}
-
-.form-field {
-    margin-bottom: 3px;
-}
-
-.form-field label {
-    width: 100%;
-}
-
-
-.form-container p {
-    color: #325050;
-    font-size: 14px;
-    font-family: 'Julius Sans One', sans-serif;
-}
-
-.separator-3 {
-    margin: 10px 0;
-    border-top: #356960;
-    color: #356960;
-}
-
-.form-button {
-    padding: 5px 5px;
-    background: #bf9d9d;
-    border: 1px #356960 solid;
-    font-size: 14px;
-    font-family: 'Julius Sans One', sans-serif;
-    color: #356960;
-    text-decoration: none;
-}
-
-.form-button:hover {
-    text-decoration: underline;
-    color: rgba(53,105,96,0.8);
-    background: rgba(191, 157, 157, 0.8);
-    border-color: #356960;
-}
-
-
-
-
-
-
-
-
-
-
 /* Order Summary */
 .order-summary-container {
     margin: 10px;
@@ -113,5 +55,58 @@
     transition:all .25s;
     color: #ddd;
     background: #4f7d7d;
+    border-color: #356960;
+}
+
+/* Shipping form */
+.shipping-info-container {
+    margin: 10px;
+    padding: 15px 15px 0 15px;
+    min-width: 300px;
+    background-color: #fff;
+    -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+    -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+}
+
+.form-field {
+    margin-bottom: 3px;
+}
+
+.form-field label {
+    width: 100%;
+}
+
+
+.shipping-info-container p {
+    color: #325050;
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.separator-3 {
+    margin: 10px 0;
+    border-top: #356960;
+    color: #356960;
+}
+
+.shipping-button {
+    margin-top: 5px;
+    margin-right: 45px;
+    margin-bottom: 10px;
+    padding: 5px 5px;
+    background: #bf9d9d;
+    border: 1px #356960 solid;
+    font-size: 14px;
+    font-family: 'Julius Sans One', sans-serif;
+    color: #356960;
+    text-decoration: none;
+}
+
+.shipping-button:hover {
+    text-decoration: underline;
+    color: rgba(53,105,96,0.8);
+    background: rgba(191, 157, 157, 0.8);
     border-color: #356960;
 }
