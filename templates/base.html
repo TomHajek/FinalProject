@@ -30,8 +30,15 @@
 
     <!-- Base js file -->
     <script type="text/javascript" src="{% static "js/base.js" %}" async></script>
-</head>
+    <script type="text/javascript" src="{% static "js/products.js" %}" async></script>
 
+    <!-- Set/Query user - if user is not logged in, the value will be "AnonymousUser" -->
+    <script type="text/javascript">
+        let user = "{{ request.user }}"
+    </script>
+
+
+</head>
 <body>
     <header>
         <!-- Navigation menu bar -->
@@ -44,8 +51,8 @@
                 <li class="item"><a href="#">About</a></li>
                 <li class="item cart">
                     <a href="{% url "cart:cart" %}">
-                        <i class="fa fa-shopping-bag fa-lg" aria-hidden="true"></i>
-                        <p id="cart-total">{{ cart_items }}</p>
+                        <i class="fa fa-shopping-bag fa-lg" aria-hidden="true"> 0</i>
+                        <!-- <p id="cart-total">{{ cart_items }}</p> -->
                     </a>
                 </li>
                 {% if user.is_authenticated %}

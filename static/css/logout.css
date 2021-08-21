@@ -17,6 +17,7 @@
     -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
     -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
 	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+    border-radius: 5px;
 }
 
 .logout-form {
@@ -36,9 +37,10 @@
 
 #logout-confirm {
     margin: 10px;
-    padding: 5px;
+    padding: 10px;
     background: #bf9d9d;
     border: 1px #356960 solid;
+    border-radius: 5px;
     font-size: 14px;
     font-family: 'Julius Sans One', sans-serif;
     color: #356960;
@@ -47,7 +49,16 @@
 
 #logout-confirm:hover {
     text-decoration: underline;
+    transition:all .25s;
     color: rgba(53,105,96,0.8);
     background: rgba(191, 157, 157, 0.8);
     border-color: #356960;
+}
+
+#logout-confirm:active {
+    text-decoration: underline;
+    transition:all .25s;
+    color: #2b554d;
+    background: #ae8484;
+    border-color: #2b554d;
 }

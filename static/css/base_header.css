@@ -37,11 +37,17 @@ body {
 .menu li a {
     color: rgba(255,255,255,0.8);
     text-decoration: none;
+    border-radius: 5px;
 }
 
 .menu li a:hover {
     text-decoration: underline;
     color: rgba(255,255,255,1);
+}
+
+.menu li a:active {
+    text-decoration: underline;
+    color: #bf9d9d;
 }
 
 .logo a span{
@@ -62,20 +68,34 @@ body {
 }
 
 /* Shopping Cart - ukazatel počtu produktů v košíku */
+.item.cart {
+    margin-left: 5px;
+    padding: 9px;
+    background-color: #134347;
+    border: 1px #134347;
+    border-radius: 5px;
+}
+
+.item.cart:hover {
+    transition:all .25s;
+    color: #ddd;
+    background: #4f7d7d;
+    border-color: #356960;
+}
+
+.item.cart:active {
+    transition:all .25s;
+    color: #bf9d9d;
+    background: #134347;
+    border-color: #134347;
+}
+
 /*
-#cart-total{
-	display: block;
-	text-align: center;
-    vertical-align: center;
-	color: rgba(255,255,255,0.8);
-	background-color: red;
-	width: 16px;
-	height: 16px;
-	border-radius: 50%;
-	font-size: 10px;
-    font-weight: bold;
+.item.cart i {
+    color: #bf9d9d;
 }
 */
+
 
 /* Banner */
 .banner-area {
@@ -196,24 +216,29 @@ body {
         order: 2;
     }
 
-    .button.secondary {
-        border: 0;
-    }
-
     .button a {
         padding: 8px 15px;
         background: #134347;
         border: 1px #134347 solid;
-        /*border-radius:50em;*/
+    }
+
+    .button a:hover {
+        transition:all .25s;
+    }
+
+    .button a:active {
+        transition:all .25s;
+        color: #bf9d9d;
+        background: #134347;
+        border-color: #134347;
+    }
+
+    .button.secondary {
+        border: 0;
     }
 
     .button.secondary a {
         background: transparent;
-    }
-
-    .button a:hover {
-        text-decoration: none;
-        transition:all .25s;
     }
 
     .button:not(.secondary) a:hover {
@@ -222,10 +247,25 @@ body {
         border-color: #356960;
     }
 
+    .button:not(.secondary) a:active {
+        transition:all .25s;
+        color: #bf9d9d;
+        background: #134347;
+        border-color: #134347;
+    }
+
     .button.secondary a:hover {
         color: #ddd;
         background: #4f7d7d;
         border-color: #356960;
+    }
+
+    .button.secondary a:active {
+        text-decoration: underline;
+        transition:all .25s;
+        color: #bf9d9d;
+        background: #134347;
+        border-color: #134347;
     }
 
     .banner-area h1 {

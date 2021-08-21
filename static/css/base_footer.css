@@ -65,6 +65,10 @@ footer {
 }
 
 .socials a:hover i{
+    color: #134347;
+}
+
+.socials a:active i{
     color: #bf9d9d;
 }
 

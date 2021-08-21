@@ -11,7 +11,7 @@
             <h3>Order Summary</h3>
             <hr class="separator-4">
             <!-- Tabulka položek v košíku -->
-            {% for item in items %}
+            {% for item in cartitem_set.all %}
                 <table class="items-table">
                     <tr>
                         {% if product.image_url %}
@@ -31,9 +31,9 @@
             {% endfor %}
             <hr class="separator-4">
             <!-- Shrnutí nákupu -->
-            <h5>Items:   {{order.get_cart_items}}</h5>
+            <h5>Items:   {{cart.get_cart_items}}</h5>
             <br>
-            <h5>Total:   {{order.get_cart_total}}</h5>
+            <h5>Total:   {{cart.get_cart_total}}</h5>
         </div>
         <!-- Dodací údaje -->
         <div class="shipping-info-container">
@@ -42,6 +42,7 @@
                     <p>Shipping Information</p>
                     <hr class="separator-3">
                     <!-- Informace uživatele -->
+                    <!-- nastavit jako python formular -->
                     <div id="user-info">
                         <div class="form-field">
                             <label>
