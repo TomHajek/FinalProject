@@ -58,7 +58,7 @@
     font-family: 'Julius Sans One', sans-serif;
 }
 
-.add-button {
+.product-add-button {
     padding: 5px 5px;
     background: #356960;
     border: 1px #134347 solid;
@@ -67,7 +67,7 @@
     color: rgba(255,255,255,0.8);
 }
 
-.add-button:hover {
+.product-add-button:hover {
     text-decoration: underline;
     transition:all .25s;
     color: #ddd;

@@ -23,7 +23,7 @@ class Discount(Model):
 
     created_at = DateTimeField(auto_now_add=True)
     modified_at = DateTimeField(null=True, blank=True)
-    deleted_at = DateTimeField(null=False, blank=False)
+    # deleted_at = DateTimeField(null=False, blank=False)
 
     def __str__(self):
         return f" {self.name.capitalize()} sleva {self.percent} %."
@@ -51,14 +51,14 @@ class Cart(Model):
         return availability, message
 
     @property
-    def get_cart_total(self):
+    def cart_total(self):
         """ Celkem k zaplacení """
         cart_items = self.cartitem_set.all()  # cartitem_set -> self generated "related name"
-        total_cost = sum([item.get_total for item in cart_items])
+        total_cost = sum([item.total_cost for item in cart_items])
         return total_cost
 
     @property
-    def get_cart_items(self):
+    def cart_items(self):
         """ Počet produktů v košíku """
         cart_items = self.cartitem_set.all()
         total_items = sum([item.quantity for item in cart_items])
@@ -77,9 +77,10 @@ class CartItem(Model):
         ordering = ["-modified_at"]
 
     @property
-    def get_total_cost(self):
+    def total_cost(self):
         if self.discount.active:
-            total_cost = (self.product.price * self.discount.percent) * self.quantity
+            discount = self.discount.percent or 1
+            total_cost = (self.product.price * discount) * self.quantity
         else:
             total_cost = self.product.price * self.quantity
         return total_cost
@@ -115,7 +116,7 @@ class Order(Model):
         return f"Uživatel: {self.user.user_id} {self.user.email} {self.user.phone_number}" \
                f"Dodací adresa: {self.shipping_address.full_address}" \
                f"Položky:{self.cart_items.product} {self.cart_items.quantity}" \
-               f"Celkem položek: {self.total_cost.get_cart_items}" \
-               f"Celkem k úhradě: {self.total_cost.get_cart_total}" \
+               f"Celkem položek: {self.total_cost.cart_items}" \
+               f"Celkem k úhradě: {self.total_cost.cart_total}" \
                f"Datum vytvoření: {self.created_at}" \
              # f"Status: {self.status}"
