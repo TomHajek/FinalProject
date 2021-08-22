@@ -6,7 +6,8 @@ from cart.models import Cart
 
 def products(request):
     """ Okno produktů """
-    cart_items = Cart.cart_items
+    # cart_items = Cart.objects.filter(user_id=request.user.id).first().cart_items
+    cart_items = Cart.objects.first().cart_items
     products = Product.objects.all()
 
     context = {"products": products, "cart_items": cart_items}

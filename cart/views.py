@@ -12,12 +12,6 @@ def cart(request):
         "cart": Cart.objects.filter(user_id=request.user.id).first()
     }
 
-    # data = update_item(request)
-    # cart_items = data["cart_items"]
-    # cart = data["cart"]
-    # items = data["items"]
-    # context = {"items": items, "cart": cart, "cart_items": cart_items}
-
     return render(request, "cart.html", context)
 
 
@@ -32,9 +26,10 @@ def checkout(request):
 
 
 def update_item(request):
+    """ Přidání produktů do košíku """
     data = json.loads(request.body)  # request.data
-    product_id = data["productId"]
-    action = data["action"]
+    product_id = data["Product"]
+    action = data["Action"]
     print("Action:", action)
     print("Product:", product_id)
 
@@ -44,13 +39,13 @@ def update_item(request):
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
 
     if action == "add":
-        cart_item.quantity = (cart_item.quantity + 1)
+        cart_item.quantity += 1
     elif action == "remove":
-        cart_item.quantity = (cart_item.quantity - 1)
+        cart_item.quantity -= 1
 
     cart_item.save()
 
     if cart_item.quantity <= 0:
         cart_item.delete()
 
-    return JsonResponse("Item was added", safe=False)
+    return JsonResponse({"msg": "Item was added", "cnt": cart.cart_items}, safe=False)

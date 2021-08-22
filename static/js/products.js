@@ -21,7 +21,7 @@ function updateUserCart(productId, action){
     console.log("User is logged in")
 
     // where we want to send data to
-    let url = "/update_view/"
+    let url = "/cart/update_item/"
 
     // to send our post data
     fetch(url,{
@@ -37,8 +37,10 @@ function updateUserCart(productId, action){
             return response.json()
         })
         .then((data) =>{
+            let cartObject = document.getElementsByClassName('fa-shopping-bag')[0];
+            cartObject.innerHTML = " " + data.cnt;
             console.log("data:", data)
             // reload page once our call returns successful
-            location.reload()
+            //location.reload()
         })
 }
