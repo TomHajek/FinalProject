@@ -89,14 +89,12 @@ body {
     background: #134347;
     border-color: #134347;
 }
-
 /*
-.item.cart i {
-    color: #bf9d9d;
+#counter {
+    font-family: 'Julius Sans One', sans-serif;
+    color: #c4ddcf;
 }
 */
-
-
 /* Banner */
 .banner-area {
     height: auto; /* 100px; */

@@ -35,6 +35,24 @@
     <!-- Set/Query user - if user is not logged in, the value will be "AnonymousUser" -->
     <script type="text/javascript">
         let user = "{{ request.user }}"
+
+        // from django documentation for json post request
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
     </script>
 
 
@@ -51,8 +69,8 @@
                 <li class="item"><a href="#">About</a></li>
                 <li class="item cart">
                     <a href="{% url "cart:cart" %}">
-                        <i class="fa fa-shopping-bag fa-lg" aria-hidden="true"> 0</i>
-                        <!-- <p id="cart-total">{{ cart_items }}</p> -->
+                        <i class="fa fa-shopping-bag fa-lg" aria-hidden="true"> {{ cart_items }}</i>
+                        <!-- <p id="counter"> 0 {{ cart_items }}</p> -->
                     </a>
                 </li>
                 {% if user.is_authenticated %}
