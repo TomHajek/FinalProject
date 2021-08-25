@@ -24,6 +24,9 @@ class ProductSubCategory(Model):
     name = CharField(max_length=64, null=False, blank=False)
     description = TextField(max_length=128, null=True, blank=True)
 
+    class Meta:
+        verbose_name_plural = 'ProductSubCategories'
+
     def __str__(self):
         return f"{self.name} {self.description}"
 
@@ -35,6 +38,9 @@ class ProductCategory(Model):
 
     def __str__(self):
         return f"{self.name} - {self.sub_category.name}"
+
+    class Meta:
+        verbose_name_plural = 'ProductCategories'
 
 
 class Product(Model):
@@ -49,9 +55,6 @@ class Product(Model):
     created_at = DateTimeField(auto_now_add=True)
     modified_at = DateTimeField(null=True, blank=True)
     # deleted_at = DateTimeField(null=False, blank=False)
-
-    class Meta:
-        ordering = ["-created_at"]
 
     def __str__(self):
         return f"{self.name},  {self.price} CZK, {self.quantity} PCS"

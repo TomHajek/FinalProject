@@ -26,10 +26,36 @@
                             Add to Cart
                         </button>
                         <!-- Tlačítko - Detail produktu -->
-                        <a class="view-button" href="#">
+                        <a class="view-button">
                             View
                         </a>
-				        <h3>{{product.price}} {{product.currency}}</h3>
+				        <h3>{{product.price}} CZK</h3>   <!-- {{product.currency}} -->
+                    </div>
+                </div>
+                <!-- Pop-up view -->
+                <div class="popup-view">
+                    <div class="popup-card">
+                        <a><i class="fas fa-times close-btn" aria-hidden="true"></i></a>
+                        <div class="product-img">
+                            {% if product.image_url %}
+                                <img class="product-image" src="{{product.image_url}}" alt="{{product.id}}">
+                            {% else %}
+                                <img class="product-image" src="{% static "images/placeholder.png" %}" alt="{{product.id}}">
+                            {% endif %}
+                        </div>
+                        <div class="detail-info">
+                            <h3>{{product.name}}</h3>
+                            <hr>
+                            <p>{{product.description}}</p>
+                            <hr>
+                            <span class="price">{{product.price}} CZK</span>
+                            <button type="submit"
+                                    class="product-add-button update-cart"
+                                    data-product="{{product.id}}"
+                                    data-action="add">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -44,3 +44,29 @@ function updateUserCart(productId, action){
             //location.reload()
         })
 }
+
+
+// Popup views
+let popupViews = document.querySelectorAll(".popup-view");
+let popupButtons = document.querySelectorAll(".view-button");
+let closeButtons = document.querySelectorAll(".close-btn");
+
+// popup quick view button
+let popup = function(popupClick) {
+    popupViews[popupClick].classList.add("active");
+}
+
+popupButtons.forEach((popupButton, i) => {
+    popupButton.addEventListener("click", () => {
+        popup(i);
+    });
+});
+
+// popup close button
+closeButtons.forEach((closeButton) => {
+    closeButton.addEventListener("click", () => {
+        popupViews.forEach((popupView) => {
+            popupView.classList.remove("active");
+        });
+    });
+});

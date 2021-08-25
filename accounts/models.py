@@ -12,6 +12,9 @@ class Address(Model):
     zipcode = CharField(max_length=128, null=False, blank=False)
     state_iso3 = CharField(max_length=3, null=False, blank=False)
 
+    class Meta:
+        verbose_name_plural = 'Addresses'
+
     def full_address(self):
         return f"{self.address}, {self.city}, {self.zipcode}, {self.state_iso3},"
 

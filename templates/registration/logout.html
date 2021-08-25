@@ -3,14 +3,12 @@
 {% block content %}
     <div class="flexbox-logout">
         <div class="logout-container">
-            <form class="logout-form" method="POST" action='{% url "accounts:login" %}'>
+            <form class="logout-form" method="POST" action='{% url "accounts:logout" %}'>
                 {% csrf_token %}
                 <p id="logout-message">Are you sure want to log out?</p>
                 <input id="logout-confirm" type="submit" value="Submit" class="btn btn-danger">
             </form>
-            <!--
-            <a href="{% url "accounts:login" %}">Click here to login again.</a>
-            -->
+
         </div>
     </div>
 {% endblock %}
