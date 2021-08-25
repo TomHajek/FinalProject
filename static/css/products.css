@@ -17,7 +17,7 @@
     background-color: #fff;
     -webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
     -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
-	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+	box-shadow:hsl(0, 0%, 70%) 0 0 16px;
     border-radius: 5px;
 }
 
@@ -25,6 +25,10 @@
     padding: 10px;
     display: flex;
     justify-content: center;
+}
+
+.image-container:hover {
+    cursor: pointer;
 }
 
 .thumbnail {
@@ -67,6 +71,7 @@
     font-size: 14px;
     font-family: 'Julius Sans One', sans-serif;
     color: rgba(255,255,255,0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .product-add-button:hover {
@@ -188,6 +193,7 @@
     color: #c4ddcf;
     background-color: #134347;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 3;
     position: absolute;
     right: 0;

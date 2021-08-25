@@ -48,7 +48,7 @@ function updateUserCart(productId, action){
 
 // Popup views
 let popupViews = document.querySelectorAll(".popup-view");
-let popupButtons = document.querySelectorAll(".view-button");
+let popupButtons = document.querySelectorAll(".image-container"); //view-button
 let closeButtons = document.querySelectorAll(".close-btn");
 
 // popup quick view button

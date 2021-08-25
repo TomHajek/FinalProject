@@ -74,6 +74,7 @@ body {
     background-color: #134347;
     border: 1px #134347;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .item.cart:hover {
@@ -140,6 +141,10 @@ body {
 
 .item.active {
     display: block;
+}
+
+.item.cart {
+    margin: 5px;
 }
 
 .banner-area h1 {
@@ -215,9 +220,11 @@ body {
     }
 
     .button a {
+        margin: 5px;
         padding: 8px 15px;
         background: #134347;
         border: 1px #134347 solid;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .button a:hover {

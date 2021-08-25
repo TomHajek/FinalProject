@@ -51,6 +51,7 @@
     font-family: 'Julius Sans One', sans-serif;
     color: #356960;
     text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #register-submit:hover {
