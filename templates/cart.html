@@ -15,8 +15,8 @@
              <!-- Tabulka shrnutí -->
             <table class="summary-table">
                 <tr>
-                    <th><h5>Items: {{cart.cart_items}}</h5></th>
-                    <th><h5>Total: {{cart.cart_total}}</h5></th>
+                    <th><h5>Items: {{cart.cart_items}} pcs</h5></th>
+                    <th><h5>Total: {{cart.cart_total}} CZK</h5></th>
                     <th>
                         <a  class="checkout-button" href="{% url "cart:checkout" %}">Checkout</a>
                     </th>
@@ -54,28 +54,27 @@
                         <!-- Product information -->
                         <th><p>{{item.product.name}}</p></th>
                         <th><p>{{item.product.price}}</p></th>
-                        <!-- Add quantity +1 -->
-                        <th><div class="quantity">
-                                <img data-product="{{item.product.id}}"
-                                     data-action="increment"
-                                     class="change-quantity update-cart"
-                                     src="{% static  'images/arrow-up.png' %}"
-                                     alt="+">
-                            </div>
-                        </th>
                         <!-- Product quantity -->
-                        <th><p class="item-quantity">{{item.quantity}}</p>
-                        <!-- Remove quantity -1 -->
-                        <th><div class="quantity">
-                                <img data-product="{{item.product.id}}"
-                                     data-action="decrement"
-                                     class="change-quantity update-cart"
-                                     src="{% static  'images/arrow-down.png' %}"
-                                     alt="-">
-                            </div>
+                        <th><div class="item-quantity">
+                                <p>{{item.quantity}}</p>
+                                <div class="change-quantity">
+                                    <!-- Add quantity +1 -->
+                                    <img data-product="{{item.product.id}}"
+                                         data-action="increment"
+                                         class="change-quantity update-cart"
+                                         src="{% static  'images/arrow-up.png' %}"
+                                         alt="+">
+                                    <!-- Remove quantity -1 -->
+                                    <img data-product="{{item.product.id}}"
+                                         data-action="decrement"
+                                         class="change-quantity update-cart"
+                                         src="{% static  'images/arrow-down.png' %}"
+                                         alt="-">
+                                </div>
+                             </div>
                         </th>
-                        <!-- Product total price -->
-                        <th><p class="total">{{item.cart_total}}</p></th>
+                        <!-- Product total cost -->
+                        <th><p class="total">{{item.total_cost}} CZK</p></th>
                     </tr>
                 </table>
             {% endfor %}

@@ -5,13 +5,13 @@
     <!-- Filtr -->
     <div class="product-filter">
         <form class="filter-form" method="get">
-            {{ filtered_products.form }}
+            {{ filter.form }}
             <input class="filter-button" type="submit" value="Set">
         </form>
     </div>
     <hr class="filter-hr">
     <div class="flexbox">
-        {% for product in filtered_products.qs %}
+        {% for product in filter.qs %}
         {#  { for product in products %} #}
             <div class="content-container">
                 <!-- Obrázek produktu -->

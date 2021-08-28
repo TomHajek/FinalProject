@@ -79,7 +79,7 @@ class CartItem(Model):
 
     @property
     def total_cost(self):
-        if self.discount.active:
+        if self.discount and self.discount.active:
             discount = self.discount.percent or 1
             total_cost = (self.product.price * discount) * self.quantity
         else:

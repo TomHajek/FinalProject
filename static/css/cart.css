@@ -43,7 +43,7 @@
 
 .summary-table h5 {
     color: #325050;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Julius Sans One', sans-serif;
 }
 
@@ -56,7 +56,7 @@
     background: #356960;
     border: 1px #134347 solid;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
     font-family: 'Julius Sans One', sans-serif;
     color: rgba(255,255,255,0.8);
@@ -84,7 +84,7 @@
     background: #bf9d9d;
     border: 1px #356960 solid;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Julius Sans One', sans-serif;
     color: #356960;
     text-decoration: none;
@@ -125,13 +125,25 @@
     margin: 5px;
     padding: 0 5px;
     width: 100%;
-    text-align: left;
+    text-align: center;
+
+    color: #325050;
+    font-size: 14px;
+    font-family: 'Calibri', sans-serif;
 }
 
 .items-table h5 {
     color: #325050;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Julius Sans One', sans-serif;
+}
+
+.items-table th {
+    width: 10%;
+}
+
+.cart-row th {
+    width: 20%;
 }
 
 .separator-2 {
@@ -142,19 +154,16 @@
 
 .row-image{
 	height: 50px;
+    width: 50px;
 }
 
-.quantity{
-	display: inline-block;
-	font-weight: 700;
-	padding-right:10px;
+.items-quantity {
+    width: 100%;
 }
 
 .change-quantity{
-	width: 12px;
 	cursor: pointer;
-	display: block;
-	margin-top: 5px;
+	display: block ruby;
 	transition:.1s;
 }
 
