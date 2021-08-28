@@ -16,6 +16,7 @@ for (let i = 0; i < addToCartButtons.length; i++){
     })
 }
 
+
 // Update Cart View (POST request)
 function updateUserCart(productId, action){
     console.log("User is logged in")
@@ -41,17 +42,17 @@ function updateUserCart(productId, action){
             cartObject.innerHTML = " " + data.cnt;
             console.log("data:", data)
             // reload page once our call returns successful
-            //location.reload()
+            // location.reload()
         })
 }
 
 
-// Popup views
+// Pop-up modal view
 let popupViews = document.querySelectorAll(".popup-view");
 let popupButtons = document.querySelectorAll(".image-container"); //view-button
 let closeButtons = document.querySelectorAll(".close-btn");
 
-// popup quick view button
+// Open pop-up view
 let popup = function(popupClick) {
     popupViews[popupClick].classList.add("active");
 }
@@ -62,7 +63,7 @@ popupButtons.forEach((popupButton, i) => {
     });
 });
 
-// popup close button
+// Close pop-up view
 closeButtons.forEach((closeButton) => {
     closeButton.addEventListener("click", () => {
         popupViews.forEach((popupView) => {

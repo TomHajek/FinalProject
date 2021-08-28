@@ -56,17 +56,18 @@
                         <th><p>{{item.product.price}}</p></th>
                         <!-- Product quantity -->
                         <th><div class="item-quantity">
-                                <p>{{item.quantity}}</p>
                                 <div class="change-quantity">
                                     <!-- Add quantity +1 -->
                                     <img data-product="{{item.product.id}}"
-                                         data-action="increment"
+                                         data-action="add"
                                          class="change-quantity update-cart"
                                          src="{% static  'images/arrow-up.png' %}"
                                          alt="+">
+                                    <!-- Current quantity -->
+                                    <p>{{item.quantity}}</p>
                                     <!-- Remove quantity -1 -->
                                     <img data-product="{{item.product.id}}"
-                                         data-action="decrement"
+                                         data-action="remove"
                                          class="change-quantity update-cart"
                                          src="{% static  'images/arrow-down.png' %}"
                                          alt="-">

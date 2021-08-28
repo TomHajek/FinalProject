@@ -11,8 +11,8 @@
             <h3>Order Summary</h3>
             <hr class="separator-4">
             <!-- Tabulka položek v košíku -->
-            {% for item in cartitem_set.all %}
-                <table class="items-table">
+            {% for item in cart.cartitem_set.all %}
+                <table class="items-table checkout">
                     <tr>
                         {% if product.image_url %}
                             <th>
@@ -24,16 +24,16 @@
                             </th>
                         {% endif %}
                         <th><p>{{item.product.name}}</p></th>
-                        <th><p>{{item.product.price}}</p></th>
-                        <th><p>{{item.quantity}}</p></th>
+                        <th><p>{{item.product.price}} CZK</p></th>
+                        <th><p>{{item.quantity}} pcs</p></th>
                     </tr>
                 </table>
             {% endfor %}
             <hr class="separator-4">
             <!-- Shrnutí nákupu -->
-            <h5>Items:   {{cart.get_cart_items}}</h5>
+            <h5>Items:  {{cart.cart_items}} pcs</h5>
             <br>
-            <h5>Total:   {{cart.get_cart_total}}</h5>
+            <h5>Total:  {{cart.cart_total}} CZK</h5>
         </div>
         <!-- Dodací údaje -->
         <div class="shipping-info-container">

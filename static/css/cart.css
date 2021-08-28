@@ -158,15 +158,22 @@
 }
 
 .items-quantity {
-    width: 100%;
 }
 
-.change-quantity{
-	cursor: pointer;
-	display: block ruby;
-	transition:.1s;
+.change-quantity {
+    cursor: pointer;
+    transition: .1s;
+    display: block ruby;
+    margin: 0 2px;
+    padding: 0 5px;
 }
 
 .change-quantity:hover{
 	opacity: .6;
+}
+
+.change-quantity.update-cart {
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #c4ddcf;
 }

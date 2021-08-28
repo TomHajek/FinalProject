@@ -46,7 +46,7 @@
     background: #356960;
     border: 1px #134347 solid;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
     font-family: 'Julius Sans One', sans-serif;
     color: rgba(255,255,255,0.8);
@@ -69,6 +69,13 @@
     border-color: #2b554e;
 }
 
+.items-table.checkout {
+    width: 100%;
+}
+
+.items-table.checkout th {
+    width: 25%;
+}
 
 /* Shipping form */
 .shipping-info-container {
@@ -111,7 +118,7 @@
     background: #bf9d9d;
     border: 1px #356960 solid;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Julius Sans One', sans-serif;
     color: #356960;
     text-decoration: none;
