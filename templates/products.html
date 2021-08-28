@@ -2,8 +2,17 @@
 {% load static %}
 
 {% block content %}
+    <!-- Filtr -->
+    <div class="product-filter">
+        <form class="filter-form" method="get">
+            {{ filtered_products.form }}
+            <input class="filter-button" type="submit" value="Set">
+        </form>
+    </div>
+    <hr class="filter-hr">
     <div class="flexbox">
-        {% for product in products %}
+        {% for product in filtered_products.qs %}
+        {#  { for product in products %} #}
             <div class="content-container">
                 <!-- Obrázek produktu -->
                 <div class="image-container">

@@ -15,18 +15,9 @@ def cart(request):
     return render(request, "cart.html", context)
 
 
-def checkout(request):
-    """ Okno potvrzení objednávky """
-    context = {
-        "cart": Cart.objects.filter(user_id=request.user.id).first()
-    }
-    # výsledkem toho bude založený order
-
-    return render(request, "checkout.html", context)
-
-
 def update_item(request):
     """ Přidání produktů do košíku """
+    #if request.user.is_authenticated:
     data = json.loads(request.body)  # request.data
     product_id = data["Product"]
     action = data["Action"]
@@ -49,3 +40,28 @@ def update_item(request):
         cart_item.delete()
 
     return JsonResponse({"msg": "Item was added", "cnt": cart.cart_items}, safe=False)
+
+""" 
+    else:
+        data = json.loads(request.body)  # request.data
+        product_id = data["Product"]
+        action = data["Action"]
+        print("Action:", action)
+        print("Product:", product_id)
+
+        user = None
+        product = Product.objects.get(id=product_id)
+        cart, created = Cart.objects.get_or_create(user=user)
+        cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+"""
+
+
+
+def checkout(request):
+    """ Okno potvrzení objednávky """
+    context = {
+        "cart": Cart.objects.filter(user_id=request.user.id).first()
+    }
+    # výsledkem toho bude založený order
+
+    return render(request, "checkout.html", context)

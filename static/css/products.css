@@ -2,13 +2,76 @@
 
 /* PAGE CONTENT */
 /* products.html */
+
+/* Filter */
+.product-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 20px;
+}
+
+.filter-form {
+}
+
+.filter-form label, input, textarea{
+    margin: 5px;
+    display: inline-block;
+    text-align: left;
+    color: #325050;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Julius Sans One', sans-serif;
+    vertical-align: middle;
+}
+
+.filter-form input, textarea {
+}
+
+.filter-hr {
+    margin-left: 20px;
+    margin-right: 20px;
+    border-top: #356960;
+    color: #356960;
+}
+
+.filter-button {
+    float: right;
+    margin: 5px;
+    padding: 5px;
+    background: #bf9d9d;
+    border: 1px #356960 solid;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Julius Sans One', sans-serif;
+    color: #356960;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.filter-button:hover {
+    text-decoration: underline;
+    transition:all .25s;
+    color: rgba(53,105,96,0.8);
+    background: rgba(191, 157, 157, 0.8);
+    border-color: #356960;
+}
+
+.filter-button:active {
+    text-decoration: underline;
+    transition:all .25s;
+    color: #2b554d;
+    background: #ae8484;
+    border-color: #2b554d;
+}
+
+/* Products */
 .flexbox {
     margin: 25px 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 
 /* Product container */
 .content-container {

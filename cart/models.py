@@ -34,6 +34,7 @@ class Cart(Model):
     user = ForeignKey(Profile, on_delete=SET_NULL, null=True, blank=True)
     # status = SmallIntegerField(Status.get_choices(), default=10)
     created_at = DateTimeField(auto_now_add=True)
+    # session_key = CharField(max_length=40, null=True)
 
     def __str__(self):
         return f"User no.: {str(self.user_id)}, order no.: {str(self.id)}"

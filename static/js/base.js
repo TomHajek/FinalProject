@@ -12,7 +12,7 @@ $(document).ready(function () {
 });
 
 
-// Set/Query user - if user is not logged in, the value will be "AnonymousUser" -->
+// Set/Query user - if user is not logged in, the value will be "AnonymousUser"
 let user = "{{ request.user }}"
 
 // from django documentation for json post request
