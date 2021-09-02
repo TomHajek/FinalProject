@@ -6,8 +6,8 @@ for (let i = 0; i < addToCartButtons.length; i++){
       let productId = this.dataset.product
       let action = this.dataset.action
       console.log("Product:", productId, "Action:", action)
-
       console.log("USER:", user)
+
         if (user === "AnonymousUser"){
             console.log("Not logged in")
         } else {

@@ -8,7 +8,11 @@ from products.models import Product
 
 def cart(request):
     """ Okno košíku """
-    cart_obj, _ = Cart.objects.get_or_create(user=request.user.profile)
+    if request.user.is_anonymous:
+        cart_items = 0
+    else:
+        cart_obj, _ = Cart.objects.get_or_create(user=request.user.profile)
+
 
     return render(request, "cart.html", {
         "cart": cart_obj,
